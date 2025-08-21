@@ -1,0 +1,59 @@
+intent,text
+open_app,Open Chrome
+open_app,Launch Spotify
+open_app,Start Notepad
+open_app,Open Calculator
+open_app,Launch Word
+open_app,Open Excel
+open_app,Start Paint
+open_app,Open VLC Player
+open_app,Launch Firefox
+open_app,Open PowerPoint
+search_web,Search for Python tutorials
+search_web,Find best laptops on Amazon
+search_web,Google machine learning
+search_web,Search for nearby restaurants
+search_web,Find trending news
+search_web,Google weather today
+search_web,Search best movies 2025
+search_web,Find AI research papers
+search_web,Google latest tech news
+search_web,Search for nearby coffee shops
+tell_time,What time is it?
+tell_time,Tell me the current time
+tell_time,Time now
+tell_time,Current time please
+tell_time,Show me the time
+tell_time,What’s the time right now?
+tell_time,Could you tell me the time?
+tell_time,Time please
+tell_time,Give me the current time
+tell_date,What's the date today?
+tell_date,Tell me today's date
+tell_date,Current date
+tell_date,Show me today’s date
+tell_date,What day is it today?
+tell_date,Give me the date
+tell_date,Today’s date please
+make_note,Take a note: buy milk
+make_note,Note down meeting at 5 PM
+make_note,Add note about project
+make_note,Remember to call John
+make_note,Create a note for groceries
+make_note,Note: finish homework
+make_note,Add reminder: gym at 6
+open_folder,Open Downloads folder
+open_folder,Go to Documents folder
+open_folder,Show Desktop folder
+open_folder,Open Pictures folder
+open_folder,Open Videos folder
+open_folder,Go to Music folder
+open_website,Open YouTube
+open_website,Launch Gmail
+open_website,Open GitHub
+open_website,Open StackOverflow
+open_website,Open LinkedIn
+exit,Quit
+exit,Stop
+exit,Exit the assistant
+exit,Close AI assistant

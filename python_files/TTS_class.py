@@ -1,16 +1,6 @@
-import speech_recognition as sr
-import webbrowser
-import subprocess
-import os
 import platform
-import re
-import json
 import queue
 import threading
-import time
-from datetime import datetime
-from urllib.parse import quote_plus
-from pathlib import Path
 
 SVSFlagsAsync = 1
 SVSFPurgeBeforeSpeak = 2
@@ -52,7 +42,7 @@ class TTS:
                     try:
                         for v in self.sapi_voice.GetVoices():
                             if voice.lower() in v.GetDescription().lower():
-                                self.sapi_voice = v
+                                self.sapi_voice.Voice = v
                                 break
                     except Exception:
                         pass
@@ -88,8 +78,8 @@ class TTS:
             if self.engine_kind is None:
                 print('No TTS engine available. Please install pyttsx or win32com.client for TTS supprt.\nOnly text will appear in the console.')
 
-            self._worker_thread = threading.Thread(target=self._loop, daemon =True)
-            self._worker_thread.start()
+        self._worker_thread = threading.Thread(target=self._loop, daemon =True)
+        self._worker_thread.start()
         
     def speak(self, text: str):
         if not text:
@@ -104,9 +94,9 @@ class TTS:
         except Exception:
             pass
 
-        if self._engine_kind == 'sapi' and self.sapi_voice:
+        if self.engine_kind == 'sapi' and self.sapi_voice:
             try:
-                self.sapi_voice.Speak('', self.SVSFPurgeBeforeSpeak|self.SVSFlagsAsync)
+                self.sapi_voice.Speak('', SVSFPurgeBeforeSpeak|SVSFlagsAsync)
                 # Stop the current speech ourge speech flag triggers the stop and async flag allows the speech to be stopped immediately
             except Exception:
                 pass
@@ -132,12 +122,12 @@ class TTS:
            
             try:
                 if self.engine_kind == 'sapi' and self.sapi_voice:        
-                    self.sapi_voice.Speak(text, self.SVSFlagsAsync)
+                    self.sapi_voice.Speak(text, SVSFlagsAsync)
                     max_wait_ms = min(max(500,len(text)*50), 30000) 
                     waited = 0
                     step = 150
                     while waited < max_wait_ms:
-                        if self.sapi_voice.WaitUntillDone(step):
+                        if self.sapi_voice.WaitUntilDone(step):
                             break
                         waited += step
                 elif self.engine_kind == 'pyttsx3' and self._pytts:
@@ -150,6 +140,4 @@ class TTS:
             
             self.queue.task_done()
 
-            
 
-                
