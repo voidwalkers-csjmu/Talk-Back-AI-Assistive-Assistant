@@ -18,6 +18,10 @@ class Command_Handler():
         if self.cmd in ('exit', 'quit', 'stop'):
             return "__EXIT__"
         
+        self.m = self._FOLDER_PAT.match(self.cmd)
+        if self.m:
+            return self.xec.open_folder(self.m.group('folder'))
+        
         if self.cmd.startswith('open '):
             app_name = self.cmd[5:].strip()
             return self.xec.launch_windows_apps(app_name)
@@ -42,9 +46,6 @@ class Command_Handler():
         if self.m:
             return self.xec.make_note(self.m.group('text'))
         
-        self.m = self._FOLDER_PAT.match(self.cmd)
-        if self.m:
-            return self.xec.open_folder(self.m.group('folder'))
         
         return "I haven't been modelled for that action!"
     
